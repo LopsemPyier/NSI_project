@@ -34,7 +34,7 @@ class Gui:
         self.resultText = Tk.StringVar()
 
         self.mainFrame = Tk.Frame(self.root)
-        self.explicationLabel = Tk.Label(self.mainFrame, text="Bienvenue dans notre convertiseur de base.")
+        self.explicationLabel = Tk.Label(self.mainFrame, text="Bienvenue dans notre convertisseur de base.")
 
         self.startNumberFrame = Tk.Frame(self.mainFrame)
         self.startNumberLabel = Tk.Label(self.startNumberFrame, text="Entrez un nombre")
@@ -46,8 +46,8 @@ class Gui:
         self.startBaseLabel = Tk.Label(self.startBaseFrame, text="En base : ")
         self.startBaseSpinBox = Tk.Spinbox(self.startBaseFrame, from_=2, to=36, textvariable=self.startBase)
         self.arrivedBaseFrame = Tk.Frame(self.mainFrame)
-        self.arrivedBaseLabel = Tk.Label(self.startBaseFrame, text="Vers la base : ")
-        self.arrivedBaseSpinBox = Tk.Spinbox(self.mainFrame, from_=2, to=36, textvariable=self.arrivedBase)
+        self.arrivedBaseLabel = Tk.Label(self.arrivedBaseFrame, text="Vers la base : ")
+        self.arrivedBaseSpinBox = Tk.Spinbox(self.arrivedBaseFrame, from_=2, to=36, textvariable=self.arrivedBase)
 
         self.buttonFrame = Tk.Frame(self.mainFrame)
         self.calculateButton = Tk.Button(self.buttonFrame, text="Convertir", command=self.convert)
@@ -55,7 +55,7 @@ class Gui:
         self.switchButton = Tk.Button(self.buttonFrame, text="Échanger les bases", command=self.switchBase)
         self.copyButton = Tk.Button(self.buttonFrame, text="Copier le résultat", command=self.copyResult)
 
-        self.resultLabel = Tk.Label(self.mainFrame, textvariable=self.resultText)
+        self.resultLabel = Tk.Label(self.arrivedBaseFrame, textvariable=self.resultText)
 
         self.packMainFrameItems()
         self.displayMainFrame()
@@ -128,6 +128,9 @@ class Gui:
         if self.resultLabel.winfo_ismapped():
             self.root.clipboard_clear()
             self.root.clipboard_append(self.arrivedNumber)
+            self.root.update()
+        else:
+            self.root.clipboard_clear()
             self.root.update()
 
     def checkIfNumberEntredIsCorrect(self):
