@@ -54,7 +54,7 @@ class Gui:
 
         self.startEntryFrame = Tk.Frame(self.startFrame, width = 230, height = 36, bg="#fff", relief=Tk.SOLID, borderwidth=1)
         self.startEntryLimitFrame = Tk.Frame(self.startEntryFrame, width = 230, height = 36, bg="#fff")
-        self.startNumberEntry = Tk.Entry(self.startEntryLimitFrame, relief=Tk.FLAT, textvariable = self.startNumber, bg="#fff", width = 250, font=self.customEntryFont)
+        self.startNumberEntry = Tk.Entry(self.startEntryLimitFrame, relief=Tk.FLAT, insertborderwidth=0, highlightthickness=0, textvariable = self.startNumber, bg="#fff", width = 250, font=self.customEntryFont)
         self.resetImage = Tk.PhotoImage(file="reset.png")
         self.resetLabel = Tk.Label(self.startEntryFrame, image=self.resetImage, bg="#fff")
         self.resetLabel.bind("<Button-1>",lambda e:self.reset())
@@ -92,7 +92,7 @@ class Gui:
         self.arrivedFrame.place(x=20, y=205, width=230, height = 90)
 
         self.startNumberEntry.place(x=5, y=5, width=200, height = 24)
-        self.resetLabel.place(x=210, y=13, width=10, height = 10)
+        self.resetLabel.place(x=205, y=11)
         
         self.startBaseLabel.place(x=0, y=45, width=65, height = 20)
         self.startBaseSpinBox.place(x=70, y=45, width=160, height = 20)
