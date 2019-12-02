@@ -6,8 +6,8 @@ RESULT_TEXT = "{}"
 
 DEFAULT_START_BASE = 10
 DEFAULT_ARRIVED_BASE = 2
-DEFAULT_START_NUMBER = 0
-DEFAULT_ARRIVED_NUMBER = 0
+DEFAULT_START_NUMBER = -1
+DEFAULT_ARRIVED_NUMBER = -1
 
 ALPHA = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
@@ -149,6 +149,7 @@ class Gui:
 
     def reset(self):
         self.startNumber.set("")
+        self.startNumberEntry.delete(0, Tk.END)
         self.arrivedNumber = DEFAULT_START_NUMBER
 
         self.errorBase.set("")
@@ -157,7 +158,7 @@ class Gui:
         self.startBase.set(DEFAULT_START_BASE)
         self.arrivedBase.set(DEFAULT_ARRIVED_BASE)
 
-        self.startNumberErrorLabel.pack_forget()
+        self.startNumberErrorLabel.place_forget()
 
     def switchBase(self):
         b1 = self.startBase.get()
@@ -165,6 +166,13 @@ class Gui:
 
         self.startBase.set(b2)
         self.arrivedBase.set(b1)
+
+        a = self.arrivedNumber if self.arrivedNumber != -1 else ""
+
+        self.startNumberEntry.delete(0, Tk.END)
+        self.startNumberEntry.insert(0, str(a))
+
+        self.convert()
 
     def copyResult(self):
         if self.arrivedNumber != -1:
